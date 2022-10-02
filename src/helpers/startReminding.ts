@@ -15,6 +15,7 @@ async function runReminders() {
       },
       status: ReminderStatus.pending,
     })
+    if (!reminders.length) return
     console.log('Running reminders', reminders.length)
     for (const reminder of reminders) {
       reminder.status = ReminderStatus.fired
@@ -39,5 +40,6 @@ async function runReminders() {
 }
 
 export default function () {
-  setTimeout(runReminders, 1 * 1000)
+  void runReminders()
+  setInterval(runReminders, 1 * 1000)
 }
