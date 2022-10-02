@@ -1,11 +1,9 @@
 import { Notification } from '@/models/Notification'
 import { ReminderModel } from '@/models/Reminder'
 import { SeenNotificationIdModel } from '@/models/SeenNotificationId'
-import { humanizer as humanizerBuilder } from 'humanize-duration'
+import humanizer from '@/helpers/humanizer'
 import parse from 'parse-duration'
 import publishCast from '@/helpers/publishCast'
-
-const humanizer = humanizerBuilder()
 
 async function handleNotification(notification: Notification) {
   if (
