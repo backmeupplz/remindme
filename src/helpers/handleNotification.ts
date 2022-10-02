@@ -25,8 +25,17 @@ async function handleNotification(notification: Notification) {
       fireTime: (notification.cast.publishedAt + duration) / 1000,
       replyToCastId: notification.cast.merkleRoot,
       username: notification.user.username,
+      duration,
     })
-    const replyText = `Noted 📝 I will remind you in ${humanizedDuration}`
+    console.log(
+      'Adding reminder',
+      notification.user.username,
+      humanizedDuration,
+      duration,
+      (notification.cast.publishedAt + duration) / 1000,
+      notification.cast.merkleRoot
+    )
+    const replyText = `📝 Noted! I will remind you about this cast in ${humanizedDuration} 🫡`
     await publishCast(replyText, notification.cast.merkleRoot)
   } catch (error) {
     console.error(

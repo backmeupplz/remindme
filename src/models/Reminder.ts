@@ -8,6 +8,8 @@ export class Reminder {
   @prop({ index: true, required: true })
   fireTime!: number
   @prop({ index: true, required: true })
+  duration!: number
+  @prop({ index: true, required: true })
   replyToCastId!: string
   @prop({ index: true, required: true })
   username!: string
