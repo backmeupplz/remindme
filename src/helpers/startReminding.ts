@@ -24,7 +24,7 @@ async function runReminders() {
         `👋 @${
           reminder.username
         } you asked me to remind you about this cast in ${humanizer(
-          reminder.duration * 1000
+          reminder.duration
         )} 🫡`,
         reminder.replyToCastId
       )
