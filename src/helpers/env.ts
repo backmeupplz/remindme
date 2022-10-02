@@ -9,4 +9,5 @@ dotenv.config({ path: resolve(cwd(), '.env') })
 export default cleanEnv(process.env, {
   FARCASTER_MNEMONIC: str(),
   MONGO: str(),
+  USERNAME: str(),
 })

@@ -14,14 +14,18 @@
     "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src"
   },
   "dependencies": {
+    "@standard-crypto/farcaster-js": "2.0.2",
     "axios": "^0.27.2",
     "dotenv": "^16.0.3",
     "envalid": "^7.3.1",
     "ethers": "^5.7.1",
-    "mongoose": "^6.6.3"
+    "humanize-duration": "^3.27.3",
+    "mongoose": "^6.6.3",
+    "parse-duration": "^1.0.2"
   },
   "devDependencies": {
     "@typegoose/typegoose": "^9.12.1",
+    "@types/humanize-duration": "^3.27.1",
     "@types/node": "^18.8.0",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",

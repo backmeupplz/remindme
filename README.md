@@ -16,5 +16,6 @@ And you should be good to go! Feel free to fork and submit pull requests.
 | -------------------- | ----------------------------------- |
 | `MONGO`              | URL of the mongo database           |
 | `FARCASTER_MNEMONIC` | Mnemonic of bot's farcaster account |
+| `USERNAME`           | Username of the bot                 |
 
 Also, please, consider looking at `.env.sample`.

@@ -4,12 +4,13 @@ import {
   setCurrentNotificationId,
 } from '@/helpers/currentNotificationId'
 import axios from 'axios'
+import handleNotification from '@/helpers/handleNotification'
 import wallet from '@/helpers/wallet'
 
 function fetchNotifications(next: string) {
   return axios.get<{
     result: {
-      notifications?: Notification[]
+      notifications?: { [key: string]: Notification }
     }
     meta?: {
       next?: string
@@ -24,15 +25,19 @@ let polling = false
 async function pollNotifications() {
   if (polling) return
   polling = true
+  console.log('Polling notifications!')
   try {
     const currentNotificationId = await getCurrentNotificationId()
     let currentNotificationIdInSet = true
     let next = ''
     const notifications = [] as Notification[]
     do {
+      if (next) {
+        console.log('Fetching next page!', next)
+      }
       const result = await fetchNotifications(next)
       const data = result.data
-      notifications.push(...(data.result.notifications || []))
+      notifications.push(...Object.values(data.result.notifications || {}))
       if (currentNotificationId) {
         next = data.meta?.next || ''
         currentNotificationIdInSet = notifications.some(
@@ -44,7 +49,7 @@ async function pollNotifications() {
       await setCurrentNotificationId(notifications[0].id)
     }
     for (const notification of notifications) {
-      console.log(notification)
+      await handleNotification(notification)
     }
   } catch (error) {
     console.error(error)
@@ -54,5 +59,6 @@ async function pollNotifications() {
 }
 
 export default function () {
+  void pollNotifications()
   setInterval(pollNotifications, 10 * 1000)
 }
