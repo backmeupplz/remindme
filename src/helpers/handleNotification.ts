@@ -11,6 +11,7 @@ async function handleNotification(notification: Notification) {
     !notification.cast?.merkleRoot ||
     !notification.user?.username
   ) {
+    console.log('Cannot process notification', notification)
     return
   }
   try {
