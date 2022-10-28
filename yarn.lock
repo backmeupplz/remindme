@@ -5,6 +5,16 @@ __metadata:
   version: 6
   cacheKey: 8
 
+"@big-whale-labs/botcaster@npm:^0.0.6":
+  version: 0.0.6
+  resolution: "@big-whale-labs/botcaster@npm:0.0.6"
+  dependencies:
+    axios: ^1.1.3
+    node-persist: ^3.1.0
+  checksum: ddfe07e14bd6e7010f706d3619f80220b9bbfeeae0d6d86e8f975a399289240ff2b6007544c2909b116938d032b173550a70b91bc11b6b2554185b475ae89234
+  languageName: node
+  linkType: hard
+
 "@eslint/eslintrc@npm:^1.3.2":
   version: 1.3.2
   resolution: "@eslint/eslintrc@npm:1.3.2"
@@ -958,13 +968,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.27.1, axios@npm:^0.27.2":
+"axios@npm:^0.27.1":
   version: 0.27.2
   resolution: "axios@npm:0.27.2"
   dependencies:
     follow-redirects: ^1.14.9
     form-data: ^4.0.0
   checksum: 38cb7540465fe8c4102850c4368053c21683af85c5fdf0ea619f9628abbcb59415d1e22ebc8a6390d2bbc9b58a9806c874f139767389c862ec9b772235f06854
+  languageName: node
+  linkType: hard
+
+"axios@npm:^1.1.3":
+  version: 1.1.3
+  resolution: "axios@npm:1.1.3"
+  dependencies:
+    follow-redirects: ^1.15.0
+    form-data: ^4.0.0
+    proxy-from-env: ^1.1.0
+  checksum: cab3b17bf6092c9387f7023d699db093cfa23650b56c4422cd474d124b78b2e3b5a520f932c330664a58ab85b867b1c25a95cace475ef72d236888c852b84e6d
   languageName: node
   linkType: hard
 
@@ -1779,7 +1800,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.14.8, follow-redirects@npm:^1.14.9":
+"follow-redirects@npm:^1.14.8, follow-redirects@npm:^1.14.9, follow-redirects@npm:^1.15.0":
   version: 1.15.2
   resolution: "follow-redirects@npm:1.15.2"
   peerDependenciesMeta:
@@ -2502,6 +2523,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-persist@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "node-persist@npm:3.1.0"
+  checksum: 8d99916f269272415474a6edd5e9323b59854807673e16e4c036c2b5fe7bd257c119d47f0bc9d19af8889241531c44b12a55a576cc33786ceab16faa3c20c951
+  languageName: node
+  linkType: hard
+
 "object-inspect@npm:^1.11.0, object-inspect@npm:^1.9.0":
   version: 1.11.0
   resolution: "object-inspect@npm:1.11.0"
@@ -2704,6 +2732,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"proxy-from-env@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "proxy-from-env@npm:1.1.0"
+  checksum: ed7fcc2ba0a33404958e34d95d18638249a68c430e30fcb6c478497d72739ba64ce9810a24f53a7d921d0c065e5b78e3822759800698167256b04659366ca4d4
+  languageName: node
+  linkType: hard
+
 "ps-tree@npm:^1.2.0":
   version: 1.2.0
   resolution: "ps-tree@npm:1.2.0"
@@ -2747,13 +2782,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "remindme@workspace:."
   dependencies:
+    "@big-whale-labs/botcaster": ^0.0.6
     "@standard-crypto/farcaster-js": 2.0.2
     "@typegoose/typegoose": ^9.12.1
     "@types/humanize-duration": ^3.27.1
     "@types/node": ^18.8.0
     "@typescript-eslint/eslint-plugin": ^5.38.1
     "@typescript-eslint/parser": ^5.38.1
-    axios: ^0.27.2
     dotenv: ^16.0.3
     envalid: ^7.3.1
     eslint: ^8.24.0

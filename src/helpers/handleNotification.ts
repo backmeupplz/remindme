@@ -1,4 +1,4 @@
-import { Notification } from '@/models/Notification'
+import { Notification } from '@big-whale-labs/botcaster'
 import { ReminderModel } from '@/models/Reminder'
 import { SeenNotificationIdModel } from '@/models/SeenNotificationId'
 import humanizer from '@/helpers/humanizer'
