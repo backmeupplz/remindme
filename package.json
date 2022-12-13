@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@big-whale-labs/botcaster": "^0.0.6",
-    "@standard-crypto/farcaster-js": "2.0.2",
+    "@standard-crypto/farcaster-js": "^5.2.0",
     "dotenv": "^16.0.3",
     "envalid": "^7.3.1",
     "ethers": "^5.7.1",
@@ -45,5 +45,5 @@
   "_moduleAliases": {
     "@": "dist"
   },
-  "packageManager": "yarn@3.2.3"
+  "packageManager": "yarn@3.3.0"
 }
