@@ -1,41 +1,41 @@
 import { Notification } from '@big-whale-labs/botcaster'
-import { ReminderModel } from '@/models/Reminder'
-import { SeenNotificationIdModel } from '@/models/SeenNotificationId'
-import humanizer from '@/helpers/humanizer'
+import { ReminderModel } from '../models/Reminder'
+import { SeenNotificationIdModel } from '../models/SeenNotificationId'
+import humanizer from './humanizer'
 import parse from 'parse-duration'
-import publishCast from '@/helpers/publishCast'
+import publishCast from './publishCast'
 
 async function handleNotification(notification: Notification) {
   if (
-    !notification.cast?.text ||
-    !notification.cast?.merkleRoot ||
-    !notification.user?.username
+    !notification.content.cast?.text ||
+    !notification.content.cast?.hash ||
+    !notification.actor?.username
   ) {
     console.log('Cannot process notification', notification)
     return
   }
   try {
-    const duration = parse(notification.cast.text)
+    const duration = parse(notification.content.cast.text)
     if (!duration) {
       return
     }
     const humanizedDuration = humanizer(duration)
     await ReminderModel.create({
-      fireTime: (notification.cast.publishedAt + duration) / 1000,
-      replyToCastId: notification.cast.merkleRoot,
-      username: notification.user.username,
+      fireTime: (notification.content.cast.timestamp + duration) / 1000,
+      replyToCastId: notification.content.cast.hash,
+      username: notification.actor.username,
       duration,
     })
     console.log(
       'Adding reminder',
-      notification.user.username,
+      notification.actor.username,
       humanizedDuration,
       duration,
-      (notification.cast.publishedAt + duration) / 1000,
-      notification.cast.merkleRoot
+      (notification.content.cast.timestamp + duration) / 1000,
+      notification.content.cast.hash
     )
     const replyText = `📝 Noted! I will remind you about this cast in ${humanizedDuration} 🫡`
-    await publishCast(replyText, notification.cast.merkleRoot)
+    await publishCast(replyText, notification.content.cast.hash)
   } catch (error) {
     console.error(
       'Error replying to a mention',
@@ -44,7 +44,7 @@ async function handleNotification(notification: Notification) {
     try {
       await publishCast(
         `@borodutch I'm not sure what to do with this 😱`,
-        notification.cast.merkleRoot
+        notification.content.cast.hash
       )
     } catch (error) {
       console.error(

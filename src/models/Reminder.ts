@@ -1,5 +1,5 @@
 import { getModelForClass, modelOptions, prop } from '@typegoose/typegoose'
-import ReminderStatus from '@/models/ReminderStatus'
+import ReminderStatus from './ReminderStatus'
 
 @modelOptions({
   schemaOptions: { timestamps: true },

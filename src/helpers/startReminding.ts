@@ -1,7 +1,7 @@
-import { ReminderModel } from '@/models/Reminder'
-import ReminderStatus from '@/models/ReminderStatus'
-import humanizer from '@/helpers/humanizer'
-import publishCast from '@/helpers/publishCast'
+import { ReminderModel } from '../models/Reminder'
+import ReminderStatus from '../models/ReminderStatus'
+import humanizer from './humanizer'
+import publishCast from './publishCast'
 
 let running = false
 async function runReminders() {
