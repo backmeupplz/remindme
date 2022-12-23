@@ -6,7 +6,7 @@ void (async () => {
   console.log('Starting mongo...')
   await runMongo()
   console.log('Starting polling...')
-  startPolling()
+  await startPolling()
   console.log('Starting reminders...')
   startReminding()
   console.log('App started!')
