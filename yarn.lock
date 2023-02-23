@@ -888,13 +888,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@big-whale-labs/botcaster@npm:^0.0.16":
-  version: 0.0.16
-  resolution: "@big-whale-labs/botcaster@npm:0.0.16"
+"@big-whale-labs/botcaster@npm:^0.0.17":
+  version: 0.0.17
+  resolution: "@big-whale-labs/botcaster@npm:0.0.17"
   dependencies:
     axios: ^1.2.1
     node-persist: ^3.1.0
-  checksum: e7d836e954ca31bfc8aab3292b05e0f259ec4b04a1dde373c17bc15c5904413e1a9f9b00dcaa52b1a96e8a37dc4195a3c8412324df4a1b7bbf2ed372367c5fc7
+  checksum: cb14b9bc60863499b0b2b29a3c13307bc62ce149173a97434c067b20a131f7d6804f9d067994a4f1ae7ffc379e13980c505149638326cecf034b1191dae046d4
   languageName: node
   linkType: hard
 
@@ -3532,7 +3532,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "remindme@workspace:."
   dependencies:
-    "@big-whale-labs/botcaster": ^0.0.16
+    "@big-whale-labs/botcaster": ^0.0.17
     "@standard-crypto/farcaster-js": ^5.5.2
     "@typegoose/typegoose": ^10.0.0
     "@types/humanize-duration": ^3.27.1
