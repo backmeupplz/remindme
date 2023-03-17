@@ -61,8 +61,14 @@ export default async function (notification: Notification) {
     notificationId: notification.id,
   })
   if (seenNotificationId) return
-  void handleNotification(notification)
   await SeenNotificationIdModel.create({
     notificationId: notification.id,
   })
+  if (
+    (notification.content?.cast?.timestamp || 0) <
+    Date.now() - 1000 * 60 * 60 * 24
+  ) {
+    return
+  }
+  void handleNotification(notification)
 }
