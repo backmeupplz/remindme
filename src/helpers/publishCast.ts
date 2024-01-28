@@ -1,10 +1,9 @@
-import { MerkleAPIClient } from '@standard-crypto/farcaster-js'
-import wallet from './wallet'
+import env from './env'
+import neynar from './neynar'
 
-const client = new MerkleAPIClient(wallet)
-
-export default async function (text: string, replyToId: string) {
-  const cast = await client.fetchCast(replyToId)
-  const publishedCast = await client.publishCast(text, cast)
-  return publishedCast.hash
+export default async function (text: string, replyTo: string) {
+  const cast = await neynar.v2.publishCast(env.NEYNAR_UUID, text, {
+    replyTo: replyTo,
+  })
+  return cast.hash
 }
