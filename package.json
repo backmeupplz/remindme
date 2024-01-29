@@ -8,7 +8,7 @@
   "prettier": "@big-whale-labs/prettier-config",
   "license": "MIT",
   "scripts": {
-    "distribute": "yarn build && node --experimental-modules --es-module-specifier-resolution=node dist/app.js",
+    "distribute": "node --experimental-modules --es-module-specifier-resolution=node dist/app.js",
     "start": "tsc-watch --skipLibCheck --onSuccess 'node --experimental-modules --es-module-specifier-resolution=node dist/app.js'",
     "build": "tsc --skipLibCheck",
     "pretty": "prettier --check src",
