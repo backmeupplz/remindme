@@ -19,14 +19,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@big-whale-labs/botcaster@npm:^0.0.27":
-  version: 0.0.27
-  resolution: "@big-whale-labs/botcaster@npm:0.0.27"
+"@big-whale-labs/botcaster@npm:^0.0.28":
+  version: 0.0.28
+  resolution: "@big-whale-labs/botcaster@npm:0.0.28"
   dependencies:
     "@standard-crypto/farcaster-js": "npm:^7.1.1"
     axios: "npm:^1.6.7"
     node-persist: "npm:^4.0.1"
-  checksum: 01b96758a4710c0b7cf91095627951015f2ac38faf34e68c4b0ddc4ba4faff3551a3c5bb073c93b3a93c41cac8850e7da94ec0b648973010b4a6ac4c9e9b3c17
+  checksum: 466b46bdbde6dca8da503055366296561c87c77c726b06cc6bc099b0c3edb07c8d0e6bbaccfcb683a4f1ad3e0f112fac0e32281c4d13622c9e3814b5967b75aa
   languageName: node
   linkType: hard
 
@@ -3779,7 +3779,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "remindme@workspace:."
   dependencies:
-    "@big-whale-labs/botcaster": "npm:^0.0.27"
+    "@big-whale-labs/botcaster": "npm:^0.0.28"
     "@big-whale-labs/bwl-eslint-backend": "npm:^1.0.5"
     "@big-whale-labs/prettier-config": "npm:^1.1.3"
     "@rushstack/eslint-patch": "npm:^1.7.2"
