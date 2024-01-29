@@ -1,41 +1,41 @@
-import { Notification } from '@big-whale-labs/botcaster'
+import { CastWithInteractions } from '../../node_modules/@standard-crypto/farcaster-js-neynar/dist/commonjs/v1/openapi/generated/models/cast-with-interactions'
 import { ReminderModel } from '../models/Reminder'
 import { SeenNotificationIdModel } from '../models/SeenNotificationId'
 import humanizer from './humanizer'
 import parse from 'parse-duration'
 import publishCast from './publishCast'
 
-async function handleNotification(notification: Notification) {
+async function handleNotification(notification: CastWithInteractions) {
   if (
-    !notification.content.cast?.text ||
-    !notification.content.cast?.hash ||
-    !notification.actor?.username
+    !notification.text ||
+    !notification.hash ||
+    !('username' in notification.author)
   ) {
     console.log('Cannot process notification', notification)
     return
   }
   try {
-    const duration = parse(notification.content.cast.text)
+    const duration = parse(notification.text)
     if (!duration) {
       return
     }
     const humanizedDuration = humanizer(duration)
     await ReminderModel.create({
-      fireTime: (notification.content.cast.timestamp + duration) / 1000,
-      replyToCastId: notification.content.cast.hash,
-      username: notification.actor.username,
+      fireTime: (+notification.timestamp + duration) / 1000,
+      replyToCastId: notification.hash,
+      username: notification.author.username,
       duration,
     })
     console.log(
       'Adding reminder',
-      notification.actor.username,
+      notification.author.username,
       humanizedDuration,
       duration,
-      (notification.content.cast.timestamp + duration) / 1000,
-      notification.content.cast.hash
+      (+notification.timestamp + duration) / 1000,
+      notification.hash
     )
     const replyText = `📝 Noted! I will remind you about this cast in ${humanizedDuration} 🫡`
-    await publishCast(replyText, notification.content.cast.hash)
+    await publishCast(replyText, notification.hash)
   } catch (error) {
     console.error(
       'Error replying to a mention',
@@ -44,7 +44,7 @@ async function handleNotification(notification: Notification) {
     try {
       await publishCast(
         `@borodutch I'm not sure what to do with this 😱`,
-        notification.content.cast.hash
+        notification.hash
       )
     } catch (error) {
       console.error(
@@ -55,19 +55,16 @@ async function handleNotification(notification: Notification) {
   }
 }
 
-export default async function (notification: Notification) {
+export default async function (notification: CastWithInteractions) {
   if (notification.type !== 'cast-mention') return
   const seenNotificationId = await SeenNotificationIdModel.findOne({
-    notificationId: notification.id,
+    notificationId: notification.hash,
   })
   if (seenNotificationId) return
   await SeenNotificationIdModel.create({
-    notificationId: notification.id,
+    notificationId: notification.hash,
   })
-  if (
-    (notification.content?.cast?.timestamp || 0) <
-    Date.now() - 1000 * 60 * 60 * 24
-  ) {
+  if ((+notification.timestamp || 0) < Date.now() - 1000 * 60 * 60 * 24) {
     return
   }
   void handleNotification(notification)
