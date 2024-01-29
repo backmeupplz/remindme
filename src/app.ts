@@ -1,6 +1,9 @@
-import runMongo from './helpers/mongo'
-import startPolling from './helpers/startPolling'
-import startReminding from './helpers/startReminding'
+import 'module-alias/register'
+import 'source-map-support/register'
+
+import runMongo from '@/helpers/mongo'
+import startPolling from '@/helpers/startPolling'
+import startReminding from '@/helpers/startReminding'
 
 void (async () => {
   console.log('Starting mongo...')
