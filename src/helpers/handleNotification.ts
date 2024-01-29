@@ -4,6 +4,7 @@ import { SeenNotificationIdModel } from '../models/SeenNotificationId'
 import humanizer from './humanizer'
 import parse from 'parse-duration'
 import publishCast from './publishCast'
+import dateStringToTimestamp from './dateStringToTimestamp'
 
 async function handleNotification(notification: CastWithInteractions) {
   if (
@@ -21,7 +22,8 @@ async function handleNotification(notification: CastWithInteractions) {
     }
     const humanizedDuration = humanizer(duration)
     await ReminderModel.create({
-      fireTime: (+notification.timestamp + duration) / 1000,
+      fireTime:
+        (dateStringToTimestamp(notification.timestamp) + duration) / 1000,
       replyToCastId: notification.hash,
       username: notification.author.username,
       duration,
@@ -31,7 +33,7 @@ async function handleNotification(notification: CastWithInteractions) {
       notification.author.username,
       humanizedDuration,
       duration,
-      (+notification.timestamp + duration) / 1000,
+      (dateStringToTimestamp(notification.timestamp) + duration) / 1000,
       notification.hash
     )
     const replyText = `📝 Noted! I will remind you about this cast in ${humanizedDuration} 🫡`
@@ -64,7 +66,10 @@ export default async function (notification: CastWithInteractions) {
   await SeenNotificationIdModel.create({
     notificationId: notification.hash,
   })
-  if ((+notification.timestamp || 0) < Date.now() - 1000 * 60 * 60 * 24) {
+  if (
+    (dateStringToTimestamp(notification.timestamp) || 0) <
+    Date.now() - 1000 * 60 * 60 * 24
+  ) {
     return
   }
   void handleNotification(notification)
