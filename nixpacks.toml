@@ -1,0 +1,8 @@
+[variables]
+NODE_ENV = "production"
+
+[phases.build]
+cmds = ["yarn build"]
+
+[start]
+cmd = "yarn distribute"
