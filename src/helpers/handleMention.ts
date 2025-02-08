@@ -35,7 +35,7 @@ async function handleMention(mention: Message) {
       duration,
       replyToCastAuthorFid: mention.data.fid,
     })
-    const replyText = `📝 Noted! I will remind you about this cast in ${humanizedDuration} 🫡 Don't forget to follow @remindme to get notified!`
+    const replyText = `📝 Noted! I will remind you about this cast in ${humanizedDuration} 🫡 Don't forget to follow me to get notified!`
     await publishCast({
       text: replyText,
       parentCastId: {
