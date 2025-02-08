@@ -38,15 +38,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@big-whale-labs/prettier-config@npm:^1.1.3":
-  version: 1.1.3
-  resolution: "@big-whale-labs/prettier-config@npm:1.1.3"
-  peerDependencies:
-    prettier: ^2.8.0
-  checksum: 10c0/39bd2e778bccc7f67ba579f181638a95660c1222e3905ead654df608af2105b860fb209dd551d80c3e8ffc4133f976697bcaa4886013e37bc406cbc9227cfaa7
-  languageName: node
-  linkType: hard
-
 "@eslint-community/eslint-utils@npm:^4.2.0, @eslint-community/eslint-utils@npm:^4.4.0":
   version: 4.4.0
   resolution: "@eslint-community/eslint-utils@npm:4.4.0"
@@ -1215,17 +1206,6 @@ __metadata:
   bin:
     eslint-config-prettier: bin/cli.js
   checksum: 10c0/19f8c497d9bdc111a17a61b25ded97217be3755bbc4714477dfe535ed539dddcaf42ef5cf8bb97908b058260cf89a3d7c565cb0be31096cbcd39f4c2fa5fe43c
-  languageName: node
-  linkType: hard
-
-"eslint-config-prettier@npm:^9.1.0":
-  version: 9.1.0
-  resolution: "eslint-config-prettier@npm:9.1.0"
-  peerDependencies:
-    eslint: ">=7.0.0"
-  bin:
-    eslint-config-prettier: bin/cli.js
-  checksum: 10c0/6d332694b36bc9ac6fdb18d3ca2f6ac42afa2ad61f0493e89226950a7091e38981b66bac2b47ba39d15b73fff2cd32c78b850a9cf9eed9ca9a96bfb2f3a2f10d
   languageName: node
   linkType: hard
 
@@ -2790,7 +2770,6 @@ __metadata:
   resolution: "remindme@workspace:."
   dependencies:
     "@big-whale-labs/bwl-eslint-backend": "npm:^1.0.5"
-    "@big-whale-labs/prettier-config": "npm:^1.1.3"
     "@farcaster/hub-nodejs": "npm:^0.12.7"
     "@rushstack/eslint-patch": "npm:^1.7.2"
     "@typegoose/typegoose": "npm:^12.1.0"
@@ -2801,7 +2780,6 @@ __metadata:
     dotenv: "npm:^16.4.3"
     envalid: "npm:^8.0.0"
     eslint: "npm:^8.56.0"
-    eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-import: "npm:^2.29.1"
     eslint-plugin-node: "npm:^11.1.0"
     eslint-plugin-prettier: "npm:^5.1.3"
