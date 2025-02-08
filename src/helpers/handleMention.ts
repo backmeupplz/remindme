@@ -36,13 +36,13 @@ async function handleMention(mention: Message) {
       replyToCastAuthorFid: mention.data.fid,
     })
     const replyText = `📝 Noted! I will remind you about this cast in ${humanizedDuration} 🫡 Don't forget to follow @remindme to get notified!`
-    // await publishCast({
-    //   text: replyText,
-    //   parentCastId: {
-    //     fid: mention.data.fid,
-    //     hash: mention.hash,
-    //   }
-    // })
+    await publishCast({
+      text: replyText,
+      parentCastId: {
+        fid: mention.data.fid,
+        hash: mention.hash,
+      }
+    })
     console.log(`Added reminder for (${dateFromUnixTimestamp(farcasterEpochToUnix(mention.data.timestamp) + duration)}): "${mention.data.castAddBody.text}", owner: ${mention.data.fid}`)
   } catch (error) {
     console.error(
@@ -76,7 +76,7 @@ export default async function (mention: Message) {
   })
   if (
     farcasterEpochToUnix(mention.data?.timestamp || 0) <
-    (Date.now() - 1000 * 60 * 60 * 24 * 90) // max 90 days ago
+    (Date.now() - 1000 * 60 * 60 * 24)
   ) {
     return
   }
