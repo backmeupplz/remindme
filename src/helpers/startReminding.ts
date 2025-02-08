@@ -1,7 +1,8 @@
-import { ReminderModel } from '../models/Reminder'
-import ReminderStatus from '../models/ReminderStatus'
-import humanizer from './humanizer'
-import publishCast from './publishCast'
+import { ReminderModel } from '@/models/Reminder'
+import ReminderStatus from '@/models/ReminderStatus'
+import humanizer from '@/helpers/humanizer'
+import publishCast from '@/helpers/publishCast'
+import { hexToUint8Array } from '@/helpers/bufferUtils'
 
 let running = false
 async function runReminders() {
@@ -20,14 +21,12 @@ async function runReminders() {
     for (const reminder of reminders) {
       reminder.status = ReminderStatus.fired
       await reminder.save()
-      await publishCast(
-        `👋 @${
-          reminder.username
-        } you asked me to remind you about this cast in ${humanizer(
+      await publishCast({
+        text: `👋 you asked me to remind you about this cast in ${humanizer(
           reminder.duration
         )} 🫡`,
-        reminder.replyToCastId
-      )
+        parentCastId: { hash: hexToUint8Array(reminder.replyToCastId), fid: reminder.replyToCastAuthorFid }
+      })
     }
   } catch (error) {
     console.error(

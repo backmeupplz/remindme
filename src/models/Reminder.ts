@@ -1,5 +1,5 @@
 import { getModelForClass, modelOptions, prop } from '@typegoose/typegoose'
-import ReminderStatus from './ReminderStatus'
+import ReminderStatus from '@/models/ReminderStatus'
 
 @modelOptions({
   schemaOptions: { timestamps: true },
@@ -12,7 +12,7 @@ export class Reminder {
   @prop({ index: true, required: true })
   replyToCastId!: string
   @prop({ index: true, required: true })
-  username!: string
+  replyToCastAuthorFid!: number
   @prop({
     index: true,
     required: true,
