@@ -14,7 +14,7 @@
     "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src"
   },
   "dependencies": {
-    "@farcaster/hub-nodejs": "^0.12.7",
+    "@farcaster/hub-nodejs": "^0.13.1",
     "dotenv": "^16.4.3",
     "envalid": "^8.0.0",
     "humanize-duration": "^3.31.0",

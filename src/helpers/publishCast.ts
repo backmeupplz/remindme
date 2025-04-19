@@ -15,13 +15,7 @@ import {
 } from '@farcaster/hub-nodejs'
 import { mnemonicToAccount, toAccount } from 'viem/accounts'
 import { ed25519 } from '@noble/curves/ed25519'
-import {
-  createWalletClient,
-  fromHex,
-  http,
-  publicActions,
-  toHex,
-} from 'viem'
+import { createWalletClient, fromHex, http, publicActions, toHex } from 'viem'
 import {
   writeContract,
   simulateContract,
@@ -30,7 +24,7 @@ import {
 import { optimism } from 'viem/chains'
 import env from './env'
 
-const HUB_URL = '34.172.154.21:2283'
+const HUB_URL = '34.172.154.21:3383'
 const FC_NETWORK = FarcasterNetwork.MAINNET
 const hubClient = getInsecureHubRpcClient(HUB_URL)
 const KeyContract = {
@@ -40,7 +34,7 @@ const KeyContract = {
 }
 
 hubClient.getCastsByMention({
-  fid: 1
+  fid: 1,
 })
 
 async function getSigner() {
@@ -109,7 +103,10 @@ const submitMessage = async (resultPromise: HubAsyncResult<Message>) => {
 export default async function publishCast({
   text,
   parentCastId,
-}: { text: string, parentCastId?: CastId }) {
+}: {
+  text: string
+  parentCastId?: CastId
+}) {
   const signer = new NobleEd25519Signer(await getSigner())
   console.log('Got signer, publishing cast')
   await submitMessage(
